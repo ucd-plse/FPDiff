@@ -1,0 +1,21 @@
+mpmath: found 351 function signatures and 3365 test inputs.
+scipy: found 483 function signatures and 2282 test inputs.
+gsl: found 200 function signatures and 2796 test inputs.
+jmat: found 159 function signatures and 297 test inputs.
+
+TOTAL # OF CLASSES: 172
+# OF NON-TRIVIAL CLASSES: 126
+
+specialValue_unique_discrepancyTally: [20, 23, 95, 7, 11, 280]
+testMigration_unique_discrepancyTally: [0, 0, 0, 43, 107, 48]
+s3fp_unique_discrepancyTally: [0, 0, 0, 13, 12, 1]
+
+UNIQUE DISCREPANCY TOTALS:
+	TIMEOUTS: 20
+	DOUBLES FROM NAN: 23
+	DOUBLES FROM INF: 94
+	INACCURACIES: 61
+	MIX OF DOUBLES, EXCEPTIONS, SPECIAL VALUES: 129
+	MIX OF EXCEPTIONS AND SPECIAL VALUES: 328
+
+		TOTAL # OF DISCREPANCIES: 655

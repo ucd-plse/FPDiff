@@ -1,0 +1,17 @@
+
+TOTAL # OF CLASSES: 23
+# OF NON-TRIVIAL CLASSES: 17
+
+specialValue_unique_discrepancyTally: [1, 4, 17, 5, 4, 61]
+testMigration_unique_discrepancyTally: [0, 0, 0, 14, 39, 19]
+s3fp_unique_discrepancyTally: [0, 0, 0, 2, 3, 0]
+
+UNIQUE DISCREPANCY TOTALS:
+	TIMEOUTS: 1
+	DOUBLES FROM NAN: 4
+	DOUBLES FROM INF: 16
+	INACCURACIES: 19
+	MIX OF DOUBLES, EXCEPTIONS, SPECIAL VALUES: 44
+	MIX OF EXCEPTIONS AND SPECIAL VALUES: 80
+
+		TOTAL # OF DISCREPANCIES: 164

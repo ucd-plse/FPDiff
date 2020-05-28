@@ -1,0 +1,245 @@
+***************************** for Xuan ********************************************
+
+The command to run s3fp is:
+
+    s3fp $(bitWidthOfEachInput) $(numberOfInputs) inputFile pyFileOne pyFileOneOutput pyFileTwo pyFileTwoOutput
+
+the directory in which this command is run must have an s3fp configuration file in it that specifies other parameters for the testing. I've checked a sample one of these into the /tests directory that you can use. I've also checked in two sample programs in that same directory to test your modifications to s3fp on
+
+for doubles, the bit width should be 64. the number of inputs will vary depending on the function being tested. the inputFile name can just be test_input; s3fp will automatically generate this and continuously modify it
+
+TODO:
+
+    Item 1:
+        as is, s3fp calls a c program with two CL arguments: inputName and outputName
+            eg) ./test input output
+        can we modify it to call a python program with three CL arguments? This will be compatible with our drivers.
+            eg) python3 doubleInput intInput output
+
+        If we can do this, the int file will be predefined and exist in the same directory as the tests.
+
+        To complete this task incrementally, you can modify the drivers I included so that they only take two CL arguments; the function I chose only takes two doubles, but in general, we will be expecting functions that take ints and doubles.
+
+    Item 2:
+        ALSO, s3fp currently requires that the programs it is testing output quad precision numbers (based on the fact that they are assuming we have both a quad and a double precision version of the same program). Since we are not doing this, we need to relax this requirement and just allow for doubles.
+
+************************************************************************************
+
+This README file describes basic installation and usage of S3FP. 
+For more information and tutorial, 
+please access the user guide in doc (directory) or online. 
+
+
+========================
+Required Library Requirement
+========================
+1. libquadmath
+2. libpthread : For parallel RT. 
+3. boost library 
+
+
+========================
+Optional Library Requirement
+========================
+1. QD library 
+
+
+========================
+Compile S3FP 
+========================
+1. 
+Specify library paths in the Makefile in "trunk" directory: 
+Modify "BOOST_INC" to "-I (your boost root directory)" 
+For example, 
+
+    BOOST_INC = -I /home/wfchiang/lib/boost_1_54_0
+
+Modify "QD_HOME" to the directory of your QD library. 
+For example, 
+
+    QD_HOME=/home/wfchiang/lib/qd-2.3.14/install
+
+However, using QD library is optional. 
+  
+2. 
+Please do "make" for using 128-bit IEEE floating-point number arithmetic to approximate precise arithmetic. 
+
+3. 
+It is optional to use double-double floating-point numbers to approximate real numbers. 
+To use this option, the library path of your QD library is needed in the Makefile. 
+To compile, please do "make core-dd". 
+
+
+========================
+Setting of S3FP 
+========================
+S3FP reads a file that describes it setting. 
+The file name is "s3fp_setting." 
+The content of this file is described as follows: 
+
+1. Select RT search strategy: 
+
+    RT = URT   : Unguided Random Testing 
+       | BGRT  : Binary Guided Random Testing
+       | ILS   : Iterated Local Search 
+       | PSO   : Particle Swarm Optimization 
+
+2. Select timeout and resource: 
+  
+    TIMEOUT = (possitive integer) : Setting "time." The amount of resource. 
+    RESOURCE = TIME : Using time as resource. 
+             | SVE  : Using the total times of shadow value executions as resource. 
+3. Select random seed:
+
+    RSEED = (natural number) 
+
+4. Enable/Disable parallel RT: 
+
+    PARALLELRT = true | false   : Turn on/off of parallel RT. 
+
+5. Select floating-point error matrix: 
+
+    FTERROR = ABS  : Use absolute error as matrix
+            | REL  : Use relative error as matrix 
+            | ULP  : Use units in the last place error
+
+6. Select a cut-off parameter for the relative error:
+
+    REL_DELTA = (floating-point number)
+
+This parameter is used in the relative error computation:
+
+    rel_err = (x_lp - x_hp) / (sign(x_hp) * max(|x_hp|, REL_DELTA))
+   
+Where x_lp is the result of low-precision computations and
+x_hp is the result of high-precision computations.
+If this parameter is missing, it will assume the default value 0.
+
+7. Specify uniform input: 
+
+    UNIFORM_INPUT = true | false
+
+8. Specify the lower bound of uniform input: 
+
+    UNIFORM_INPUTLB = (floating-point number)
+
+If UNIFORM_INPUT is true, UNIFORM_INPUTLB must be specified. 
+
+9. Specify the upper bound of uniform input: 
+
+    UNIFORM_INPUTUB = (floating-point number) 
+
+If UNIFORM_INPUT is true, UNIFORM_INPUTUB must be specified. 
+
+10. Specify the input range file: 
+
+    INPUT_RANGE_FILE = (file path) 
+
+If UNIFORM_INPUT is false, INPUT_RANGE_FILE must be specified. 
+The file format is described in the following section. 
+
+11. (Optional) Specify configuration-to-error(s) to file
+
+    CONF_TO_ERRORS_FILE = (file path)
+
+If specifying CONF_TO_ERRORS_FILE, S3FP will dump configuration-to-errors to the specified file. 
+
+
+========================
+Input Range File
+========================
+Each line of the input range file should contain (only) two floating-point numbers which denotes the lower and the upper bounds of an input variable. 
+The total line numbers should be equal to the number of input variables. 
+
+For example, there are three input variables, v1, v2, and v3. 
+Their (initial) ranges are: 
+
+    v1 : [0.00001, 2.0]
+    v2 : [0.1, 1.0]
+    v3 : [-1.0, 1.0]
+
+The input range file should be: 
+
+    1e-05 2.0
+    0.1 1.0
+    -1.0 1.0
+
+
+========================
+Using S3FP 
+========================
+1. 
+Users should create their own low precision and high precision versions of 
+programs (executables). 
+The low precision executable performs low precision floating-point calculation.
+The high precision executable performs high precision calculation. 
+
+2. 
+Prepare the setting file of S3FP.
+(Described previously.) 
+
+3. 
+Suppose the executable of S3FP is "s3fp," 
+run S3FP with the following command: 
+
+    s3fp INPUT_WIDTH N_INPUTS INPUT_FILE_NAME LOW_EXE LOW_OUTPUT_FILE HIGH_EXE HIGH_OUTPUT_FILE
+
+The arguments are explained as follows: 
+
+INPUT_WIDTH: 
+The bit-width of all input floating-point. 
+S3FP will generate a sequence of floating-point numbers as an input 
+whose bit-widthes are all the same as specified. 
+
+N_INPUTS:
+The number of a floating-point numbers per input. 
+
+INPUT_FILE:
+The input file name. 
+
+LOW_EXE:
+The name of the low precision executable. 
+
+LOW_OUTPUT_FILE:
+The output file name of the low precision executable. 
+
+HIGH_EXE:
+The name of the high precision executable. 
+
+HIGH_OUTPUT_FILE:
+The output file name of the high precision executable. 
+
+4. 
+The user program is called with two parameters: the name of an input file and
+the name of an output file. The input file contains 128-bit floating-point numbers
+representing all input values. Note that the 128-bit floating-point values are actually 
+INPUT_WIDTH-bit FP numbers. Note that the order of reading input values MUST BE deterministic. 
+The (single) output value should be converted to a 128-bit floating-point number. This value
+must be written to the output file, which name is given as the second program parameter.
+We currently allow a single output only. 
+
+Our multi-threaded S3FP currently supports sequential programs only. S3FP will employ 
+multiple threads to execute the sequential program. Names of input and output files
+will be different for different S3FP threads.
+
+4(a).
+A simple way to create the user program is to include the existing file test2/common.h.
+This file contains all necessary functions for dealing with S3FP input/output. It also
+contains the main function. The entry point of the user program is the following
+function:
+FT compute(int inputSize, FT *data)
+
+Here, FT is a macro which defines the type of floating-point values in the program.
+The default value of FT is "float". Compiling the user program with the flag
+-DFT=double will change the floating-point type to the double precision, etc.
+
+The function compute() takes two parameter. The first parameter gives the size of input and
+the second parameter is an array of all input values. The function compute() should return
+a single value: the result of computations which will be used for the error analysis.
+
+The directory test2 contains several test programs. To run a test program, go to
+the corresponding directory and type
+make
+make test-bgrt-seq
+This will run a sequential BGRT search procedure. Change bgrt to urt to run the URT procedure.
+Change seq to par to run the parallel search.

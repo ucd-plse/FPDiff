@@ -1,0 +1,5 @@
+*.o
+s3fp
+/tests/*/*_input
+/tests/*/*_output
+/tests/*/__outdump

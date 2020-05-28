@@ -1,0 +1,155 @@
+FUNCTION SIGNATURE,Captured?
+abs: [z],x
+acos: [z],x
+acosh: [z],x
+agm: [a b],x
+airy: [z],x
+airy_deriv: [z],x
+angerj: [nu z],x
+arg: [z],x
+asin: [z],x
+asinh: [z],x
+atan: [z],x
+atan2: [x y],x
+atanh: [z],x
+bairy: [z],x
+bairy_deriv: [z],x
+besseli: [nu z],x
+besselj: [nu z],x
+besselk: [nu z],x
+bessely: [nu z],x
+beta: [x y],x
+beta_i: [x a b],x
+beta_i_inv: [x a b],x
+binomial: [n p],x
+bitand: [x y],x
+bitneg: [x],x
+bitor: [x y],x
+bitxor: [x y],x
+cdf_beta: [x alpha beta],x
+cdf_cauchy: [x x0 gamma],x
+cdf_chi_square: [x k],x
+cdf_exponential: [x lambda],x
+cdf_fisher: [x d1 d2],x
+cdf_gamma: [x k theta],x
+cdf_laplace: [x mu b],x
+cdf_logistic: [x mu s],x
+cdf_lognormal: [x mu sigma],x
+cdf_normal: [x mu sigma],x
+cdf_standardnormal: [x],x
+cdf_studentt: [x nu],x
+cdf_uniform: [x a b],x
+cdf_weibull: [x lambda k],x
+ceil: [x],x
+cheb: [a b],x
+clamp: [x from to],x
+cos: [z],x
+cosh: [z],x
+csgn: [z],x
+dawson: [x],x
+dd: [a],x
+digamma: [z],x
+dilog: [z],x
+dist: [a b],x
+dms: [a],x
+erf: [z],x
+erf_inv: [z],x
+erfc: [z],x
+erfc_inv: [z],x
+erfcx: [z],x
+erfi: [x],x
+eta: [z],x
+eulerTotient: [x],x
+factorial: [z],x
+faddeeva: [z],x
+floor: [x],x
+frac: [x],x
+fracn: [x],x
+gamma: [z],x
+gamma_inv: [z],x
+gamma_p: [s z],x
+gamma_p_inv: [s p],x
+gamma_q: [s z],x
+gcd: [x y],x
+ghm: [a b],x
+hankelh1: [nu z],x
+hankelh2: [nu z],x
+hurwitzzeta: [s q],x
+hypergeometric: [a b z],x
+hypergeometric0F1: [a z],x
+hypergeometric1F1: [a b z],x
+hypergeometric2F1: [a b c z],x
+im: [z],x
+incbeta: [x a b],x
+incgamma_lower: [s z],x
+incgamma_upper: [s z],x
+lambda: [z],x
+lcm: [x y],x
+lerp: [a b x],x
+loggamma: [z],x
+lshift: [x y],x
+manhattan: [a b],x
+minkowski: [x],x
+mod: [a b],x
+nearestPrime: [x],x
+nextPrime: [x],x
+pdf_beta: [x alpha beta],x
+pdf_cauchy: [x x0 gamma],x
+pdf_chi_square: [x k],x
+pdf_exponential: [x lambda],x
+pdf_fisher: [x d1 d2],x
+pdf_gamma: [x k theta],x
+pdf_laplace: [x mu b],x
+pdf_logistic: [x mu s],x
+pdf_lognormal: [x mu sigma],x
+pdf_normal: [x mu sigma],x
+pdf_standardnormal: [x],x
+pdf_studentt: [x nu],x
+pdf_uniform: [x a b],x
+pdf_weibull: [x lambda k],x
+permutation: [n p],x
+polygamma: [n z],x
+polylog: [s z],x
+previousPrime: [x],x
+primeCount: [x],x
+qf_beta: [x alpha beta],x
+qf_cauchy: [x x0 gamma],x
+qf_chi_square: [x k],x
+qf_exponential: [x lambda],x
+qf_fisher: [x d1 d2],x
+qf_gamma: [x k theta],x
+qf_laplace: [x mu b],x
+qf_logistic: [x mu s],x
+qf_lognormal: [x mu sigma],x
+qf_normal: [x mu sigma],x
+qf_standardnormal: [x],x
+qf_studentt: [x nu],x
+qf_uniform: [x a b],x
+qf_weibull: [x lambda k],x
+re: [z],x
+rem: [a b],x
+rotate: [z a],x
+round: [x],x
+rshift: [x y],x
+sign: [z],x
+sin: [z],x
+sinc: [z],x
+sinh: [z],x
+smallestPrimeFactor: [x],x
+stirling2: [n k],x
+struveh: [nu z],x
+struvek: [nu z],x
+struvel: [nu z],x
+struvem: [nu z],x
+tan: [z],x
+tanh: [z],x
+theta1: [z q],x
+theta2: [z q],x
+theta3: [z q],x
+theta4: [z q],x
+trigamma: [z],x
+trilog: [z],x
+trunc: [x],x
+webere: [nu z],x
+wrap: [x from to],x
+zeta: [z],x

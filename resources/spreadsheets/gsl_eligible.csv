@@ -1,0 +1,194 @@
+FUNCTION SIGNATURE,Captured?
+"double gsl_sf_airy_Ai_deriv_scaled(double x, gsl_mode_t mode)",x
+"double gsl_sf_airy_Ai_deriv(double x, gsl_mode_t mode)",x
+"double gsl_sf_airy_Ai_scaled(double x, gsl_mode_t mode)",x
+"double gsl_sf_airy_Ai(double x, gsl_mode_t mode)",x
+"double gsl_sf_airy_Bi_deriv_scaled(double x, gsl_mode_t mode)",x
+"double gsl_sf_airy_Bi_deriv(double x, gsl_mode_t mode)",x
+"double gsl_sf_airy_Bi_scaled(double x, gsl_mode_t mode)",x
+"double gsl_sf_airy_Bi(double x, gsl_mode_t mode)",x
+double gsl_sf_angle_restrict_pos(double theta),x
+double gsl_sf_angle_restrict_symm(double theta),x
+double gsl_sf_atanint(double x),x
+double gsl_sf_bessel_I0_scaled(double x),x
+double gsl_sf_bessel_i0_scaled(double x),x
+double gsl_sf_bessel_I0(double x),x
+double gsl_sf_bessel_I1_scaled(double x),x
+double gsl_sf_bessel_i1_scaled(double x),x
+double gsl_sf_bessel_I1(double x),x
+double gsl_sf_bessel_i2_scaled(double x),x
+"double gsl_sf_bessel_il_scaled(int l, double x)",x
+"double gsl_sf_bessel_In_scaled(int n, double x)",x
+"double gsl_sf_bessel_In(int n, double x)",x
+"double gsl_sf_bessel_Inu_scaled(double nu, double x)",x
+"double gsl_sf_bessel_Inu(double nu, double x)",x
+double gsl_sf_bessel_J0(double x),x
+double gsl_sf_bessel_j0(double x),x
+double gsl_sf_bessel_j1(double x),x
+double gsl_sf_bessel_J1(double x),x
+double gsl_sf_bessel_j2(double x),x
+"double gsl_sf_bessel_jl(int l, double x)",x
+"double gsl_sf_bessel_Jn(int n, double x)",x
+"double gsl_sf_bessel_Jnu(double nu, double x)",x
+double gsl_sf_bessel_k0_scaled(double x),x
+double gsl_sf_bessel_K0_scaled(double x),x
+double gsl_sf_bessel_K0(double x),x
+double gsl_sf_bessel_K1_scaled(double x),x
+double gsl_sf_bessel_k1_scaled(double x),x
+double gsl_sf_bessel_K1(double x),x
+double gsl_sf_bessel_k2_scaled(double x),x
+"double gsl_sf_bessel_kl_scaled(int l, double x)",x
+"double gsl_sf_bessel_Kn_scaled(int n, double x)",x
+"double gsl_sf_bessel_Kn(int n, double x)",x
+"double gsl_sf_bessel_Knu_scaled(double nu, double x)",x
+"double gsl_sf_bessel_Knu(double nu, double x)",x
+"double gsl_sf_bessel_lnKnu(double nu, double x)",x
+double gsl_sf_bessel_Y0(double x),x
+double gsl_sf_bessel_y0(double x),x
+double gsl_sf_bessel_y1(double x),x
+double gsl_sf_bessel_Y1(double x),x
+double gsl_sf_bessel_y2(double x),x
+"double gsl_sf_bessel_yl(int l, double x)",x
+"double gsl_sf_bessel_Yn(int n, double x)",x
+"double gsl_sf_bessel_Ynu(double nu, double x)",x
+"double gsl_sf_bessel_zero_Jnu(double nu, unsigned int s)",x
+"double gsl_sf_beta_inc(double a, double b, double x)",x
+"double gsl_sf_beta(double a, double b)",x
+double gsl_sf_Chi(double x),x
+double gsl_sf_Ci(const double x),x
+double gsl_sf_clausen(double x),x
+"double gsl_sf_conicalP_0(double lambda, double x)",x
+"double gsl_sf_conicalP_1(double lambda, double x)",x
+"double gsl_sf_conicalP_cyl_reg(int m, double lambda, double x)",x
+"double gsl_sf_conicalP_half(double lambda, double x)",x
+"double gsl_sf_conicalP_mhalf(double lambda, double x)",x
+"double gsl_sf_conicalP_sph_reg(int l, double lambda, double x)",x
+double gsl_sf_cos(double x),x
+double gsl_sf_dawson(double x),x
+double gsl_sf_debye_1(double x),x
+double gsl_sf_debye_2(double x),x
+double gsl_sf_debye_3(double x),x
+double gsl_sf_debye_4(double x),x
+double gsl_sf_debye_5(double x),x
+double gsl_sf_debye_6(double x),x
+double gsl_sf_dilog(double x),x
+"double gsl_sf_ellint_D(double phi, double k, gsl_mode_t mode)",x
+"double gsl_sf_ellint_E(double phi, double k, gsl_mode_t mode)",x
+"double gsl_sf_ellint_Ecomp(double k, gsl_mode_t mode)",x
+"double gsl_sf_ellint_F(double phi, double k, gsl_mode_t mode)",x
+"double gsl_sf_ellint_Kcomp(double k, gsl_mode_t mode)",x
+"double gsl_sf_ellint_P(double phi, double k, double n, gsl_mode_t mode)",x
+"double gsl_sf_ellint_Pcomp(double k, double n, gsl_mode_t mode)",x
+"double gsl_sf_ellint_RC(double x, double y, gsl_mode_t mode)",x
+"double gsl_sf_ellint_RD(double x, double y, double z, gsl_mode_t mode)",x
+"double gsl_sf_ellint_RF(double x, double y, double z, gsl_mode_t mode)",x
+"double gsl_sf_ellint_RJ(double x, double y, double z, double p, gsl_mode_t mode)",x
+double gsl_sf_erf_Q(double x),x
+double gsl_sf_erf_Z(double x),x
+double gsl_sf_erf(double x),x
+double gsl_sf_erfc(double x),x
+double gsl_sf_eta(double s),x
+"double gsl_sf_exp_mult(double x, double y)",x
+double gsl_sf_exp(double x),x
+double gsl_sf_expint_3(double x),x
+double gsl_sf_expint_E1(double x),x
+double gsl_sf_expint_E2(double x),x
+double gsl_sf_expint_Ei(double x),x
+"double gsl_sf_expint_En(int n, double x)",x
+double gsl_sf_expm1(double x),x
+double gsl_sf_exprel_2(double x),x
+"double gsl_sf_exprel_n(int n, double x)",x
+double gsl_sf_exprel(double x),x
+double gsl_sf_fermi_dirac_0(double x),x
+double gsl_sf_fermi_dirac_1(double x),x
+double gsl_sf_fermi_dirac_2(double x),x
+double gsl_sf_fermi_dirac_3half(double x),x
+double gsl_sf_fermi_dirac_half(double x),x
+"double gsl_sf_fermi_dirac_inc_0(double x, double b)",x
+"double gsl_sf_fermi_dirac_int(int j, double x)",x
+double gsl_sf_fermi_dirac_m1(double x),x
+double gsl_sf_fermi_dirac_mhalf(double x),x
+"double gsl_sf_gamma_inc_P(double a, double x)",x
+"double gsl_sf_gamma_inc_Q(double a, double x)",x
+"double gsl_sf_gamma_inc(double a, double x)",x
+double gsl_sf_gamma(double x),x
+double gsl_sf_gammainv(double x),x
+double gsl_sf_gammastar(double x),x
+"double gsl_sf_gegenpoly_1(double lambda, double x)",x
+"double gsl_sf_gegenpoly_2(double lambda, double x)",x
+"double gsl_sf_gegenpoly_3(double lambda, double x)",x
+"double gsl_sf_gegenpoly_n(int n, double lambda, double x)",x
+double gsl_sf_hazard(double x),x
+"double gsl_sf_hermite_deriv(const int m, const int n, const double x)",x
+"double gsl_sf_hermite_func_der(const int m, const int n, const double x)",x
+"double gsl_sf_hermite_func_fast(const int n, const double x)",x
+"double gsl_sf_hermite_func(const int n, const double x)",x
+"double gsl_sf_hermite_phys_der(const int m, const int n, const double x)",x
+"double gsl_sf_hermite_phys(const int n, const double x)",x
+"double gsl_sf_hermite_prob_der(const int m, const int n, const double x)",x
+"double gsl_sf_hermite_prob_deriv(const int m, const int n, const double x)",x
+"double gsl_sf_hermite_prob(const int n, const double x)",x
+"double gsl_sf_hermite(const int n, const double x)",x
+"double gsl_sf_hydrogenicR_1(double Z, double r)",x
+"double gsl_sf_hydrogenicR(int n, int l, double Z, double r)",x
+"double gsl_sf_hyperg_0F1(double c, double x)",x
+"double gsl_sf_hyperg_1F1_int(int m, int n, double x)",x
+"double gsl_sf_hyperg_1F1(double a, double b, double x)",x
+"double gsl_sf_hyperg_2F0(double a, double b, double x)",X
+"double gsl_sf_hyperg_2F1_conj_renorm(double aR, double aI, double c, double x)",x
+"double gsl_sf_hyperg_2F1_conj(double aR, double aI, double c, double x)",x
+"double gsl_sf_hyperg_2F1_renorm(double a, double b, double c, double x)",x
+"double gsl_sf_hyperg_2F1(double a, double b, double c, double x)",x
+"double gsl_sf_hyperg_U_int(int m, int n, double x)",x
+"double gsl_sf_hyperg_U(double a, double b, double x)",x
+"double gsl_sf_hypot(double x, double y)",x
+"double gsl_sf_hzeta(double s, double q)",x
+"double gsl_sf_laguerre_1(double a, double x)",x
+"double gsl_sf_laguerre_2(double a, double x)",x
+"double gsl_sf_laguerre_3(double a, double x)",x
+"double gsl_sf_laguerre_n(const int n, const double a, const double x)",x
+double gsl_sf_lambert_W0(double x),x
+double gsl_sf_lambert_Wm1(double x),x
+"double gsl_sf_legendre_H3d_0(double lambda, double eta)",x
+"double gsl_sf_legendre_H3d_1(double lambda, double eta)",x
+"double gsl_sf_legendre_H3d(int l, double lambda, double eta)",x
+double gsl_sf_legendre_P1(double x),x
+double gsl_sf_legendre_P2(double x),x
+double gsl_sf_legendre_P3(double x),x
+"double gsl_sf_legendre_Pl(int l, double x)",x
+"double gsl_sf_legendre_Plm(int l, int m, double x)",x
+double gsl_sf_legendre_Q0(double x),x
+double gsl_sf_legendre_Q1(double x),x
+"double gsl_sf_legendre_Ql(int l, double x)",x
+"double gsl_sf_legendre_sphPlm(int l, int m, double x)",x
+"double gsl_sf_lnbeta(double a, double b)",x
+double gsl_sf_lncosh(double x),x
+double gsl_sf_lngamma(double x),x
+"double gsl_sf_lnpoch(double a, double x)",x
+double gsl_sf_lnsinh(double x),x
+double gsl_sf_log_1plusx_mx(double x),x
+double gsl_sf_log_1plusx(double x),x
+double gsl_sf_log_abs(double x),x
+double gsl_sf_log_erfc(double x),x
+double gsl_sf_log(double x),x
+"double gsl_sf_multiply(double x, double y)",x
+"double gsl_sf_poch(double a, double x)",x
+"double gsl_sf_pochrel(double a, double x)",x
+"double gsl_sf_pow_int(double x, int n)",x
+double gsl_sf_psi_1(double x),x
+double gsl_sf_psi_1piy(double y),x
+"double gsl_sf_psi_n(int n, double x)",x
+double gsl_sf_psi(double x),x
+double gsl_sf_Shi(double x),x
+double gsl_sf_Si(const double x),x
+double gsl_sf_sin(double x),x
+double gsl_sf_sinc(double x),x
+double gsl_sf_synchrotron_1(double x),x
+double gsl_sf_synchrotron_2(double x),x
+"double gsl_sf_taylorcoeff(int n, double x)",x
+double gsl_sf_transport_2(double x),x
+double gsl_sf_transport_3(double x),x
+double gsl_sf_transport_4(double x),x
+double gsl_sf_transport_5(double x),x
+double gsl_sf_zeta(double s),x
+double gsl_sf_zetam1(double s),x
