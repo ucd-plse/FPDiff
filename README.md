@@ -1,7 +1,7 @@
 # FPDiff
 
 
-### This is the artifact accompanying the ISSTA'20 submission "Discovering Discrepancies in Numerical Libraries" (Submission 128).
+### This is the artifact accompanying the ISSTA'20 paper "Discovering Discrepancies in Numerical Libraries".
 
 ![The FPDiff Pipeline](./resources/figures/pipeline-final.png)
 
