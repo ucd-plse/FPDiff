@@ -18,15 +18,15 @@ version 2.6), the Python libraries `SciPy` (version 1.3.1) and
 `mpmath` (version 1.1.0), and the JavaScript library `jmat` (commit
 21d15fc3eb5a924beca612e337f5cb00605c03f3).
 
-In following this README, we will run the tool end-to-end to 
-generate results and then evaluate those results. This evaluation involves
+In following this README, we will run the tool end-to-end to generate
+results and then evaluate those results. This evaluation involves
 comparing the generated logs against a set of expected results,
 reconstructing all the examples used in the paper, and reconstructing
 the information in Table 4 which represent the final results of
 FPDiff. (Note that Table 1 simply describes our categorization of
-discrepancies and Tables 2 and 3 are the results of manual inspection;
-the supporting data can be found in the `resources/spreadsheets` directory, with
-a discussion in __[3.2]__.)
+discrepancies and Tables 2, 3, and 5 are the results of manual
+inspection; supporting data can be found in the
+`resources/spreadsheets` directory, with a discussion in __[3.2]__.)
 
 __[0]__ _Requirements_ 
 
@@ -239,11 +239,11 @@ In `equivalenceClasses.csv`:
 
 ### [2.3] Reconstructing Tables
 
-Table 1 simply describes our categorization of discrepancies. Tables 2
-and 3 are the results of manual inspection; the supporting data can be
-found in the `resources/spreadsheets` directory with a discussion in __[3.2]__.
-This section therefore will focus on replicating Table 4 which
-presents the final results of FPDiff. __Please note that this
+Table 1 simply describes our categorization of discrepancies. Tables
+2, 3, and 5 are the results of manual inspection; supporting data can
+be found in the `resources/spreadsheets` directory with a discussion
+in __[3.2]__. This section therefore will focus on replicating Table 4
+which presents the final results of FPDiff. __Please note that this
 reconstruction can only be done if executing the full pipeline as
 described in [1.1]__. Otherwise, the generated `statistics.txt` will
 not contain the full results presented in the paper.
