@@ -40,6 +40,8 @@ INACCURACY = 3
 MIX_OF_DOUBLES_EXCEPTIONS_SPECIAL_VALUES = 2
 MIX_OF_EXCEPTIONS_SPECIAL_VALUES = 1
 
+################# BEGIN HYPERPARAMETERS #################
+
 # Threshold for determining when a function execution should be
 # determined a "TIMEOUT"
 TIMELIMIT = 20
@@ -47,6 +49,13 @@ TIMELIMIT = 20
 # Respective relative tolerance values for classifier and diffTester
 CLASS_TOLERANCE = 0.00000001
 ERROR_TOLERANCE = 0.001
+
+# Thread Number for Multiprocess
+# string "max" will set value to be the output of os.cpu_count()
+# alternatively, an integer may be specified
+MAX_THREAD = "max"
+
+################# END HYPERPARAMETERS #################
 
 
 class TemplateDriver(ABC):
@@ -115,6 +124,12 @@ class TemplateDriver(ABC):
 
     def get_libraryName(self):
         return self.libraryName
+
+    '''
+    called when a call to a driver exceeds the TIMELIMIT
+    '''
+    def timeoutHandler(self, num, stack):
+        raise Exception("TIMEOUT")
 
 
 class GenericCDriver(TemplateDriver):
@@ -186,6 +201,7 @@ class GenericPythonDriver(TemplateDriver):
         
         try:
             # run the test
+            signal.signal(signal.SIGALRM, self.timeoutHandler)
             signal.alarm(TIMELIMIT)
             result = self.callableDriver(doubles, ints)
             signal.alarm(0)
@@ -258,12 +274,6 @@ class JmatDriver(TemplateDriver):
                 return "EXCEPTION: " + str(type(e).__name__)
             else:
                 return "EXCEPTION: " + str(e)
-
-    '''
-    called when a call to a driver exceeds the TIMELIMIT
-    '''
-    def timeoutHandler(self, num, stack):
-        raise Exception("TIMEOUT")
 
 
 class Discrepancy:

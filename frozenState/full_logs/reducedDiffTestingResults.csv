@@ -660,13 +660,12 @@ maxterms, or set zeroprec.",,,3
 8df8936b537e28b135d18d8fb003095d,214.84497503828678,2,gsl_sf_hyperg_1F1_int_DRIVER~input_num053,"[-1, -2, 2.0]",scipy,scipy_special_hyp1f1_arg3_DRIVER2,hyp1f1,inf,,,4
 8df8936b537e28b135d18d8fb003095d,214.84497503828678,2,gsl_sf_hyperg_1F1_int_DRIVER~input_num053,"[-1, -2, 2.0]",gsl,gsl_sf_hyperg_1F1_int_DRIVER,gsl_sf_hyperg_1F1_int,2.0,,,4
 8df8936b537e28b135d18d8fb003095d,214.84497503828678,2,gsl_sf_hyperg_1F1_int_DRIVER~input_num053,"[-1, -2, 2.0]",jmat,jmat_hypergeometric1F1_DRIVER2,hypergeometric1F1,2.0,,,4
-90076ada86c81fddafcf753d0d72fbce,10.021389707370934,2,gsl_sf_lngamma_DRIVER_scipy_special_gammaln_arg1_DRIVER0~s3fpInput_000,[-3.1437674375],mpmath,mpmath_loggamma_arg1_DRIVER0,loggamma,"EXCEPTION: float() argument must be a string or a number, not 'mpc'",,,5
-90076ada86c81fddafcf753d0d72fbce,10.021389707370934,2,gsl_sf_lngamma_DRIVER_scipy_special_gammaln_arg1_DRIVER0~s3fpInput_000,[-3.1437674375],mpmath,mpmath_fp_loggamma_arg1_DRIVER0,loggamma,EXCEPTION: can't convert complex to float,,,5
-90076ada86c81fddafcf753d0d72fbce,10.021389707370934,2,gsl_sf_lngamma_DRIVER_scipy_special_gammaln_arg1_DRIVER0~s3fpInput_000,[-3.1437674375],scipy,scipy_special_gammaln_arg1_DRIVER0,gammaln,-0.0014508057509730055,,,5
-90076ada86c81fddafcf753d0d72fbce,10.021389707370934,2,gsl_sf_lngamma_DRIVER_scipy_special_gammaln_arg1_DRIVER0~s3fpInput_000,[-3.1437674375],scipy,scipy_special_loggamma_arg1_DRIVER0,loggamma,nan,,,5
-90076ada86c81fddafcf753d0d72fbce,10.021389707370934,2,gsl_sf_lngamma_DRIVER_scipy_special_gammaln_arg1_DRIVER0~s3fpInput_000,[-3.1437674375],gsl,gsl_sf_lngamma_DRIVER,gsl_sf_lngamma,-0.001450805750975226,,,5
+90076ada86c81fddafcf753d0d72fbce,10.021389707370934,2,gsl_sf_lngamma_DRIVER_scipy_special_gammaln_arg1_DRIVER0~s3fpInput_000,[-3.1437674375],mpmath,mpmath_loggamma_arg1_DRIVER0,loggamma,"EXCEPTION: float() argument must be a string or a number, not 'mpc'",,,3
+90076ada86c81fddafcf753d0d72fbce,10.021389707370934,2,gsl_sf_lngamma_DRIVER_scipy_special_gammaln_arg1_DRIVER0~s3fpInput_000,[-3.1437674375],mpmath,mpmath_fp_loggamma_arg1_DRIVER0,loggamma,EXCEPTION: can't convert complex to float,,,3
+90076ada86c81fddafcf753d0d72fbce,10.021389707370934,2,gsl_sf_lngamma_DRIVER_scipy_special_gammaln_arg1_DRIVER0~s3fpInput_000,[-3.1437674375],scipy,scipy_special_gammaln_arg1_DRIVER0,gammaln,-0.0014508057509730055,,,3
+90076ada86c81fddafcf753d0d72fbce,10.021389707370934,2,gsl_sf_lngamma_DRIVER_scipy_special_gammaln_arg1_DRIVER0~s3fpInput_000,[-3.1437674375],gsl,gsl_sf_lngamma_DRIVER,gsl_sf_lngamma,-0.001450805750975226,,,3
 90076ada86c81fddafcf753d0d72fbce,10.021389707370934,2,gsl_sf_lngamma_DRIVER_scipy_special_gammaln_arg1_DRIVER0~s3fpInput_000,[-3.1437674375],jmat,jmat_loggamma_DRIVER0,loggamma,"Exception: Complex Number Returned. -0.0014508057513124006re-12.566370614359172i
-",,,5
+",,,3
 901f8b7526e47b1740e13e59a465f104,-140.48560256218593,2,gsl_sf_zeta_DRIVER~input_num000,[-151.0],mpmath,mpmath_zeta_arg1_DRIVER0,zeta,8.195215221831378e+143,,,2
 901f8b7526e47b1740e13e59a465f104,-140.48560256218593,2,gsl_sf_zeta_DRIVER~input_num000,[-151.0],mpmath,mpmath_fp_zeta_arg1_DRIVER0,zeta,"EXCEPTION: (34, 'Numerical result out of range')",,,2
 901f8b7526e47b1740e13e59a465f104,-140.48560256218593,2,gsl_sf_zeta_DRIVER~input_num000,[-151.0],gsl,gsl_sf_zeta_DRIVER,gsl_sf_zeta,8.19521522183138e+143,,,2

@@ -55,7 +55,6 @@ classKey,driverName,funcName
 10.021389707370934,mpmath_loggamma_arg1_DRIVER0,loggamma
 10.021389707370934,mpmath_fp_loggamma_arg1_DRIVER0,loggamma
 10.021389707370934,scipy_special_gammaln_arg1_DRIVER0,gammaln
-10.021389707370934,scipy_special_loggamma_arg1_DRIVER0,loggamma
 10.021389707370934,gsl_sf_lngamma_DRIVER,gsl_sf_lngamma
 10.021389707370934,jmat_loggamma_DRIVER0,loggamma
 10.25571032553408,mpmath_acsc_arg1_DRIVER0,acsc

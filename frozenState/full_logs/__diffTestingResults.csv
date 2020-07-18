@@ -934,12 +934,11 @@ maxterms, or set zeroprec.",,,3
 64185faeeed48d4ead067d29d2c29343,76.3057742941652,5,all_nanInput_pos0,[nan],mpmath,mpmath_fp_factorial_arg1_DRIVER0,factorial,EXCEPTION: cannot convert float NaN to integer,,,5
 64185faeeed48d4ead067d29d2c29343,76.3057742941652,5,all_nanInput_pos0,[nan],scipy,scipy_special_factorial_arg1_DRIVER0,factorial,0.0,,,5
 64185faeeed48d4ead067d29d2c29343,76.3057742941652,5,all_nanInput_pos0,[nan],jmat,jmat_factorial_DRIVER0,factorial,nan,,,5
-6472844b12ad70a9ed64cdc63bcae8c4,10.021389707370934,1,all_nanInput_pos0,[nan],mpmath,mpmath_loggamma_arg1_DRIVER0,loggamma,nan,,,5
-6472844b12ad70a9ed64cdc63bcae8c4,10.021389707370934,1,all_nanInput_pos0,[nan],mpmath,mpmath_fp_loggamma_arg1_DRIVER0,loggamma,nan,,,5
-6472844b12ad70a9ed64cdc63bcae8c4,10.021389707370934,1,all_nanInput_pos0,[nan],scipy,scipy_special_gammaln_arg1_DRIVER0,gammaln,nan,,,5
-6472844b12ad70a9ed64cdc63bcae8c4,10.021389707370934,1,all_nanInput_pos0,[nan],scipy,scipy_special_loggamma_arg1_DRIVER0,loggamma,nan,,,5
-6472844b12ad70a9ed64cdc63bcae8c4,10.021389707370934,1,all_nanInput_pos0,[nan],gsl,gsl_sf_lngamma_DRIVER,gsl_sf_lngamma,"EXCEPTION: error gsl_sf_lngamma_e(x, &result) ",,,5
-6472844b12ad70a9ed64cdc63bcae8c4,10.021389707370934,1,all_nanInput_pos0,[nan],jmat,jmat_loggamma_DRIVER0,loggamma,nan,,,5
+6472844b12ad70a9ed64cdc63bcae8c4,10.021389707370934,1,all_nanInput_pos0,[nan],mpmath,mpmath_loggamma_arg1_DRIVER0,loggamma,nan,,,4
+6472844b12ad70a9ed64cdc63bcae8c4,10.021389707370934,1,all_nanInput_pos0,[nan],mpmath,mpmath_fp_loggamma_arg1_DRIVER0,loggamma,nan,,,4
+6472844b12ad70a9ed64cdc63bcae8c4,10.021389707370934,1,all_nanInput_pos0,[nan],scipy,scipy_special_gammaln_arg1_DRIVER0,gammaln,nan,,,4
+6472844b12ad70a9ed64cdc63bcae8c4,10.021389707370934,1,all_nanInput_pos0,[nan],gsl,gsl_sf_lngamma_DRIVER,gsl_sf_lngamma,"EXCEPTION: error gsl_sf_lngamma_e(x, &result) ",,,4
+6472844b12ad70a9ed64cdc63bcae8c4,10.021389707370934,1,all_nanInput_pos0,[nan],jmat,jmat_loggamma_DRIVER0,loggamma,nan,,,4
 64e3f9d91999a51e88a78d5d4cec3400,599.353245614846,2,gsl_sf_hyperg_1F1_DRIVER~input_num063,"[100.0, -10.1, 1.0]",mpmath,mpmath_hyp1f1_arg3_DRIVER0,hyp1f1,-2121384633833.8645,,,4
 64e3f9d91999a51e88a78d5d4cec3400,599.353245614846,2,gsl_sf_hyperg_1F1_DRIVER~input_num063,"[100.0, -10.1, 1.0]",mpmath,mpmath_fp_hyp1f1_arg3_DRIVER0,hyp1f1,-2121384633833.8645,,,4
 64e3f9d91999a51e88a78d5d4cec3400,599.353245614846,2,gsl_sf_hyperg_1F1_DRIVER~input_num063,"[100.0, -10.1, 1.0]",scipy,scipy_special_hyp1f1_arg3_DRIVER0,hyp1f1,-2121384633829.7637,,,4
@@ -967,7 +966,6 @@ maxterms, or set zeroprec.",,,3
 681f5c6946a2a07149aaf4e95d0795d9,10.021389707370934,1,all_negZeroInput_pos0,[-0.0],mpmath,mpmath_loggamma_arg1_DRIVER0,loggamma,EXCEPTION: gamma function pole,,,3
 681f5c6946a2a07149aaf4e95d0795d9,10.021389707370934,1,all_negZeroInput_pos0,[-0.0],mpmath,mpmath_fp_loggamma_arg1_DRIVER0,loggamma,EXCEPTION: math domain error,,,3
 681f5c6946a2a07149aaf4e95d0795d9,10.021389707370934,1,all_negZeroInput_pos0,[-0.0],scipy,scipy_special_gammaln_arg1_DRIVER0,gammaln,inf,,,3
-681f5c6946a2a07149aaf4e95d0795d9,10.021389707370934,1,all_negZeroInput_pos0,[-0.0],scipy,scipy_special_loggamma_arg1_DRIVER0,loggamma,inf,,,3
 681f5c6946a2a07149aaf4e95d0795d9,10.021389707370934,1,all_negZeroInput_pos0,[-0.0],gsl,gsl_sf_lngamma_DRIVER,gsl_sf_lngamma,"EXCEPTION: domain error gsl_sf_lngamma_e(x, &result) ",,,3
 681f5c6946a2a07149aaf4e95d0795d9,10.021389707370934,1,all_negZeroInput_pos0,[-0.0],jmat,jmat_loggamma_DRIVER0,loggamma,inf,,,3
 68461c3059e99ac50335a0a4e7c279e8,66.2725347628336,2,gsl_sf_Chi_DRIVER~input_num000,[-1.0],mpmath,mpmath_chi_arg1_DRIVER0,chi,"EXCEPTION: float() argument must be a string or a number, not 'mpc'",,,2
@@ -1334,13 +1332,12 @@ maxterms, or set zeroprec.",,,3
 8fde88ee680f5c52e3ac2aa0cab75411,18.527198383926635,1,mpmath_expint_arg2_DRIVER1~input_num018,"[-1, 0.0]",mpmath,mpmath_expint_arg2_DRIVER1,expint,inf,,,2
 8fde88ee680f5c52e3ac2aa0cab75411,18.527198383926635,1,mpmath_expint_arg2_DRIVER1~input_num018,"[-1, 0.0]",scipy,scipy_special_expn_arg2_DRIVER1,expn,inf,,,2
 8fde88ee680f5c52e3ac2aa0cab75411,18.527198383926635,1,mpmath_expint_arg2_DRIVER1~input_num018,"[-1, 0.0]",gsl,gsl_sf_expint_En_DRIVER,gsl_sf_expint_En,"EXCEPTION: domain error gsl_sf_expint_En_e(n, x, &result) ",,,2
-90076ada86c81fddafcf753d0d72fbce,10.021389707370934,2,gsl_sf_lngamma_DRIVER_scipy_special_gammaln_arg1_DRIVER0~s3fpInput_000,[-3.1437674375],mpmath,mpmath_loggamma_arg1_DRIVER0,loggamma,"EXCEPTION: float() argument must be a string or a number, not 'mpc'",,,5
-90076ada86c81fddafcf753d0d72fbce,10.021389707370934,2,gsl_sf_lngamma_DRIVER_scipy_special_gammaln_arg1_DRIVER0~s3fpInput_000,[-3.1437674375],mpmath,mpmath_fp_loggamma_arg1_DRIVER0,loggamma,EXCEPTION: can't convert complex to float,,,5
-90076ada86c81fddafcf753d0d72fbce,10.021389707370934,2,gsl_sf_lngamma_DRIVER_scipy_special_gammaln_arg1_DRIVER0~s3fpInput_000,[-3.1437674375],scipy,scipy_special_gammaln_arg1_DRIVER0,gammaln,-0.0014508057509730055,,,5
-90076ada86c81fddafcf753d0d72fbce,10.021389707370934,2,gsl_sf_lngamma_DRIVER_scipy_special_gammaln_arg1_DRIVER0~s3fpInput_000,[-3.1437674375],scipy,scipy_special_loggamma_arg1_DRIVER0,loggamma,nan,,,5
-90076ada86c81fddafcf753d0d72fbce,10.021389707370934,2,gsl_sf_lngamma_DRIVER_scipy_special_gammaln_arg1_DRIVER0~s3fpInput_000,[-3.1437674375],gsl,gsl_sf_lngamma_DRIVER,gsl_sf_lngamma,-0.001450805750975226,,,5
+90076ada86c81fddafcf753d0d72fbce,10.021389707370934,2,gsl_sf_lngamma_DRIVER_scipy_special_gammaln_arg1_DRIVER0~s3fpInput_000,[-3.1437674375],mpmath,mpmath_loggamma_arg1_DRIVER0,loggamma,"EXCEPTION: float() argument must be a string or a number, not 'mpc'",,,3
+90076ada86c81fddafcf753d0d72fbce,10.021389707370934,2,gsl_sf_lngamma_DRIVER_scipy_special_gammaln_arg1_DRIVER0~s3fpInput_000,[-3.1437674375],mpmath,mpmath_fp_loggamma_arg1_DRIVER0,loggamma,EXCEPTION: can't convert complex to float,,,3
+90076ada86c81fddafcf753d0d72fbce,10.021389707370934,2,gsl_sf_lngamma_DRIVER_scipy_special_gammaln_arg1_DRIVER0~s3fpInput_000,[-3.1437674375],scipy,scipy_special_gammaln_arg1_DRIVER0,gammaln,-0.0014508057509730055,,,3
+90076ada86c81fddafcf753d0d72fbce,10.021389707370934,2,gsl_sf_lngamma_DRIVER_scipy_special_gammaln_arg1_DRIVER0~s3fpInput_000,[-3.1437674375],gsl,gsl_sf_lngamma_DRIVER,gsl_sf_lngamma,-0.001450805750975226,,,3
 90076ada86c81fddafcf753d0d72fbce,10.021389707370934,2,gsl_sf_lngamma_DRIVER_scipy_special_gammaln_arg1_DRIVER0~s3fpInput_000,[-3.1437674375],jmat,jmat_loggamma_DRIVER0,loggamma,"Exception: Complex Number Returned. -0.0014508057513124006re-12.566370614359172i
-",,,5
+",,,3
 901f8b7526e47b1740e13e59a465f104,-140.48560256218593,2,gsl_sf_zeta_DRIVER~input_num000,[-151.0],mpmath,mpmath_zeta_arg1_DRIVER0,zeta,8.195215221831378e+143,,,2
 901f8b7526e47b1740e13e59a465f104,-140.48560256218593,2,gsl_sf_zeta_DRIVER~input_num000,[-151.0],mpmath,mpmath_fp_zeta_arg1_DRIVER0,zeta,"EXCEPTION: (34, 'Numerical result out of range')",,,2
 901f8b7526e47b1740e13e59a465f104,-140.48560256218593,2,gsl_sf_zeta_DRIVER~input_num000,[-151.0],gsl,gsl_sf_zeta_DRIVER,gsl_sf_zeta,8.19521522183138e+143,,,2
@@ -1486,12 +1483,6 @@ maxterms, or set zeroprec.",,,3
 9da42e6f5bfbb8eb93d355d157dc3b06,29.525138299109987,2,mpmath_altzeta_arg1_DRIVER0~input_num023,[1e-30],mpmath,mpmath_fp_altzeta_arg1_DRIVER0,altzeta,0.5,,,3
 9da42e6f5bfbb8eb93d355d157dc3b06,29.525138299109987,2,mpmath_altzeta_arg1_DRIVER0~input_num023,[1e-30],gsl,gsl_sf_eta_DRIVER,gsl_sf_eta,0.49999999999999994,,,3
 9da42e6f5bfbb8eb93d355d157dc3b06,29.525138299109987,2,mpmath_altzeta_arg1_DRIVER0~input_num023,[1e-30],jmat,jmat_eta_DRIVER0,eta,-inf,,,3
-9da4825a3cf0135a84e66ebb4c4eb2d8,10.021389707370934,1,scipy_special_loggamma_arg1_DRIVER0~input_num004,[-1.0],mpmath,mpmath_loggamma_arg1_DRIVER0,loggamma,EXCEPTION: gamma function pole,,,5
-9da4825a3cf0135a84e66ebb4c4eb2d8,10.021389707370934,1,scipy_special_loggamma_arg1_DRIVER0~input_num004,[-1.0],mpmath,mpmath_fp_loggamma_arg1_DRIVER0,loggamma,EXCEPTION: math domain error,,,5
-9da4825a3cf0135a84e66ebb4c4eb2d8,10.021389707370934,1,scipy_special_loggamma_arg1_DRIVER0~input_num004,[-1.0],scipy,scipy_special_gammaln_arg1_DRIVER0,gammaln,inf,,,5
-9da4825a3cf0135a84e66ebb4c4eb2d8,10.021389707370934,1,scipy_special_loggamma_arg1_DRIVER0~input_num004,[-1.0],scipy,scipy_special_loggamma_arg1_DRIVER0,loggamma,nan,,,5
-9da4825a3cf0135a84e66ebb4c4eb2d8,10.021389707370934,1,scipy_special_loggamma_arg1_DRIVER0~input_num004,[-1.0],gsl,gsl_sf_lngamma_DRIVER,gsl_sf_lngamma,"EXCEPTION: error gsl_sf_lngamma_e(x, &result) ",,,5
-9da4825a3cf0135a84e66ebb4c4eb2d8,10.021389707370934,1,scipy_special_loggamma_arg1_DRIVER0~input_num004,[-1.0],jmat,jmat_loggamma_DRIVER0,loggamma,inf,,,5
 9dd8ac82af15944d396d7ef083b26de6,-66.17880111153048,1,all_nanInput_pos0,"[nan, 2.2738632088209076]",scipy,scipy_special_betaln_arg2_DRIVER0,betaln,nan,,,1
 9dd8ac82af15944d396d7ef083b26de6,-66.17880111153048,1,all_nanInput_pos0,"[nan, 2.2738632088209076]",gsl,gsl_sf_lnbeta_DRIVER,gsl_sf_lnbeta,"EXCEPTION: x too large to extract fraction part gsl_sf_lnbeta_e(x, y, &result) ",,,1
 a02eefdd81a92a3b0bcd20d3ebf44ab6,599.353245614846,1,all_negInfInput_pos1,"[2.533265554575144, -inf, 1.261714742492535]",mpmath,mpmath_hyp1f1_arg3_DRIVER0,hyp1f1,EXCEPTION: ValueError,,,4
@@ -1526,12 +1517,11 @@ a3bd1f8d48bd469678a9ac09397bdd36,599.353245614846,2,gsl_sf_hyperg_1F1_DRIVER~inp
 a3bd1f8d48bd469678a9ac09397bdd36,599.353245614846,2,gsl_sf_hyperg_1F1_DRIVER~input_num022,"[1.0, 1.5, -100.0]",gsl,gsl_sf_hyperg_1F1_DRIVER,gsl_sf_hyperg_1F1,0.005025384718759854,,,4
 a3bd1f8d48bd469678a9ac09397bdd36,599.353245614846,2,gsl_sf_hyperg_1F1_DRIVER~input_num022,"[1.0, 1.5, -100.0]",jmat,jmat_hypergeometric1F1_DRIVER0,hypergeometric1F1,"Exception: Complex Number Returned. 0.005025384718759848re-3.296831494680723e-45i
 ",,,4
-a3cf34323ad633685f3254b653d2eaab,10.021389707370934,1,all_infInput_pos0,[inf],mpmath,mpmath_loggamma_arg1_DRIVER0,loggamma,inf,,,5
-a3cf34323ad633685f3254b653d2eaab,10.021389707370934,1,all_infInput_pos0,[inf],mpmath,mpmath_fp_loggamma_arg1_DRIVER0,loggamma,nan,,,5
-a3cf34323ad633685f3254b653d2eaab,10.021389707370934,1,all_infInput_pos0,[inf],scipy,scipy_special_gammaln_arg1_DRIVER0,gammaln,inf,,,5
-a3cf34323ad633685f3254b653d2eaab,10.021389707370934,1,all_infInput_pos0,[inf],scipy,scipy_special_loggamma_arg1_DRIVER0,loggamma,inf,,,5
-a3cf34323ad633685f3254b653d2eaab,10.021389707370934,1,all_infInput_pos0,[inf],gsl,gsl_sf_lngamma_DRIVER,gsl_sf_lngamma,inf,,,5
-a3cf34323ad633685f3254b653d2eaab,10.021389707370934,1,all_infInput_pos0,[inf],jmat,jmat_loggamma_DRIVER0,loggamma,inf,,,5
+a3cf34323ad633685f3254b653d2eaab,10.021389707370934,1,all_infInput_pos0,[inf],mpmath,mpmath_loggamma_arg1_DRIVER0,loggamma,inf,,,4
+a3cf34323ad633685f3254b653d2eaab,10.021389707370934,1,all_infInput_pos0,[inf],mpmath,mpmath_fp_loggamma_arg1_DRIVER0,loggamma,nan,,,4
+a3cf34323ad633685f3254b653d2eaab,10.021389707370934,1,all_infInput_pos0,[inf],scipy,scipy_special_gammaln_arg1_DRIVER0,gammaln,inf,,,4
+a3cf34323ad633685f3254b653d2eaab,10.021389707370934,1,all_infInput_pos0,[inf],gsl,gsl_sf_lngamma_DRIVER,gsl_sf_lngamma,inf,,,4
+a3cf34323ad633685f3254b653d2eaab,10.021389707370934,1,all_infInput_pos0,[inf],jmat,jmat_loggamma_DRIVER0,loggamma,inf,,,4
 a46b9a426a34419a149d1403f9c7d848,19.955873904775213,1,all_nanInput_pos0,[nan],mpmath,mpmath_j0_arg1_DRIVER0,j0,EXCEPTION: cannot convert inf or nan to int,,,2
 a46b9a426a34419a149d1403f9c7d848,19.955873904775213,1,all_nanInput_pos0,[nan],mpmath,mpmath_fp_j0_arg1_DRIVER0,j0,EXCEPTION: NoConvergence,,,2
 a46b9a426a34419a149d1403f9c7d848,19.955873904775213,1,all_nanInput_pos0,[nan],scipy,scipy_special_j0_arg1_DRIVER0,j0,nan,,,2

@@ -9,12 +9,14 @@ import struct
 import csv
 import itertools
 import re
+import multiprocessing
 import hashlib
 from header import *
 
 # set working directory
 WD = os.path.dirname(os.path.abspath(__file__))
 os.chdir(WD)
+
 
 '''
 takes in an equivalence class, gathers all test inputs to be used 
@@ -33,7 +35,7 @@ def diffTester(classNo, classKey, totalClassCount, equivalenceClass, TEST_INPUTS
         
     # remove any duplicates (s3fp inputs are gathered twice above)
     inputNames = list(set(inputNames))
-
+    
     # test each of those inputs
     for inputName in sorted(inputNames):
         
@@ -57,13 +59,13 @@ def diffTester(classNo, classKey, totalClassCount, equivalenceClass, TEST_INPUTS
             x = Discrepancy(classKey, inputName, inputTuple, outputDriverPairs)
             if x:            
                 if x.get_id() not in UNIQUE_DISCREPANCIES.keys():
-                    UNIQUE_DISCREPANCIES[x.get_id()] = x
-                    UNIQUE_DISCREPANCIES[x.get_id()].set_discrepancyNo(hashlib.md5(str(x.get_id()).encode()).hexdigest())
+                    x.set_discrepancyNo(hashlib.md5(str(x.get_id()).encode()).hexdigest())
+                    UNIQUE_DISCREPANCIES[x.get_id()] = x                    
 
                 # if we get a better relative error for an identical discrepancy id, take the better relative error
                 elif x.get_discrepancyCategory() == INACCURACY and UNIQUE_DISCREPANCIES[x.get_id()].get_maxRelErr() < x.get_maxRelErr():
-                    UNIQUE_DISCREPANCIES[x.get_id()] = x
-                    UNIQUE_DISCREPANCIES[x.get_id()].set_discrepancyNo(hashlib.md5(str(x.get_id()).encode()).hexdigest())
+                    x.set_discrepancyNo(hashlib.md5(str(x.get_id()).encode()).hexdigest())
+                    UNIQUE_DISCREPANCIES[x.get_id()] = x                    
                 
                 ALL_DISCREPANCIES.append(x)
         
@@ -131,7 +133,7 @@ def getStats(UNIQUE_DISCREPANCIES, ALL_DISCREPANCIES, USED_INPUTS):
         elif "s3fpInput" in inputName:
             s3fpInputTotal += 1
             s3fpEvals += tally
-    
+
     ALL_DISCREPANCIES.sort(key=lambda x : str(x.get_discrepancyNo()))
 
     for discrepancy in ALL_DISCREPANCIES:
@@ -176,7 +178,7 @@ def getStats(UNIQUE_DISCREPANCIES, ALL_DISCREPANCIES, USED_INPUTS):
         f.write("\tMIX OF EXCEPTIONS AND SPECIAL VALUES: {}\n".format(total_discrepancyTally[1]))
         f.write("\n\t\tTOTAL # OF DISCREPANCIES: {}\n".format(sum(list(total_discrepancyTally.values()))))
 
-                    
+      
 def inspect(UNIQUE_DISCREPANCIES):
     inspected_discrepancies = {}
 
@@ -198,9 +200,11 @@ def inspect(UNIQUE_DISCREPANCIES):
 
 if __name__ == "__main__":
 
-    UNIQUE_DISCREPANCIES = {}
-    ALL_DISCREPANCIES = []
-    USED_INPUTS = {}
+    manager = multiprocessing.Manager()
+
+    UNIQUE_DISCREPANCIES_MANAGER = manager.dict()
+    ALL_DISCREPANCIES_MANAGER = manager.list()
+    USED_INPUTS_MANAGER = manager.dict()
 
     with open("__temp/__equivalenceClasses", 'rb') as fp:
         CLASSES = pickle.load(fp)
@@ -209,7 +213,7 @@ if __name__ == "__main__":
         TEST_INPUTS = pickle.load(fp)
 
     # load s3fpInputs if there are any
-    elementaryInts = []
+    elementaryInts = manager.list()
     with open("__temp/__elementaryInputs", "rb") as fp:
         ELEMENTARY_INPUTS = pickle.load(fp)
         for outputTuple in ELEMENTARY_INPUTS.values():
@@ -228,8 +232,48 @@ if __name__ == "__main__":
             for i, ints in enumerate(elementaryInts):
                 TEST_INPUTS[x + "_{:0>3}".format(i)] = (doubles, ints)
 
+    # store all the classNo and classKey
+    classNoList = []
+    classKeyList = []
     for classNo, classKey in enumerate(sorted(list(CLASSES.keys()))):
-        diffTester(classNo, classKey, len(list(CLASSES.keys())), CLASSES[classKey], TEST_INPUTS, UNIQUE_DISCREPANCIES, ALL_DISCREPANCIES, USED_INPUTS)
+        classNoList.append(classNo)
+        classKeyList.append(classKey)
+
+    # run diffTester() for a chunk of classes
+    def runDiffTester(start, end):
+        for i in range(start, end):
+            diffTester(classNoList[i], classKeyList[i], len(list(CLASSES.keys())), CLASSES[classKeyList[i]], TEST_INPUTS, UNIQUE_DISCREPANCIES_MANAGER, ALL_DISCREPANCIES_MANAGER, USED_INPUTS_MANAGER)
+
+    # check user tuned multi-task number
+    if MAX_THREAD == "max":
+        NUM_MULTIPROCESSING = os.cpu_count()
+    elif MAX_THREAD > len(classNoList):
+        NUM_MULTIPROCESSING = os.cpu_count()
+    else:
+        NUM_MULTIPROCESSING = MAX_THREAD
+
+    # find break points for chunks of classes
+    breakPoints = []
+    breakPoints.append(0)
+    for i in range(1, NUM_MULTIPROCESSING):
+        breakPoints.append(int(len(classNoList) * (i / NUM_MULTIPROCESSING)))
+    breakPoints.append(len(classNoList))
+
+    # create multi-process
+    processes = []
+    for i in range(0, NUM_MULTIPROCESSING):
+        p = multiprocessing.Process(target=runDiffTester, args=[breakPoints[i], breakPoints[i+1]])
+        p.start()
+        processes.append(p)
+        
+    # wait for the processes
+    for process in processes:
+        process.join()
+
+    # convert multiprocess data structure back to normal python data structure
+    UNIQUE_DISCREPANCIES = dict(UNIQUE_DISCREPANCIES_MANAGER)
+    ALL_DISCREPANCIES = list(ALL_DISCREPANCIES_MANAGER)
+    USED_INPUTS = dict(USED_INPUTS_MANAGER)
 
     writeOutCSVfile(UNIQUE_DISCREPANCIES, "__diffTestingResults.csv")
     getStats(UNIQUE_DISCREPANCIES, ALL_DISCREPANCIES, USED_INPUTS)
