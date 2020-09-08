@@ -9,6 +9,7 @@ from header import *
 import csv
 import itertools
 import math
+import multiprocessing
 from pprint import pprint
 from difflib import SequenceMatcher
 
@@ -60,37 +61,66 @@ def generateElementaryInputs():
 
 def classify(CLASSES, DRIVER_LIST, ELEMENTARY_INPUTS):
 
-    i = 0
+    # i for progress bar
+    i = 1
+
     lengthInput = len(ELEMENTARY_INPUTS.values()) * len(DRIVER_LIST.values())
 
-    # for each elementary input
-    for elementaryInput in ELEMENTARY_INPUTS.values():
-        
-        # for each driver in the DRIVER_LIST, run on the elementary input and accumulate result
-        for driver in DRIVER_LIST.values():
-            result = driver.run_driver(elementaryInput[0], elementaryInput[1])
+    # shared dict to store key and result
+    manager = multiprocessing.Manager()
+    RESULT_LIST_MANAGER = manager.dict()
 
-            if isinstance(result, str):
+    # function for parallization
+    def runDriver_parallelly(elementaryInput, driver, key):
+        result = driver.run_driver(elementaryInput[0], elementaryInput[1])
+        
+        if isinstance(result, str):
                 driver.add_exceptionMessage(result)
                 driver.add_classificationOutput(0)
 
-            # weeds out special values, identity funcs, rounding funcs
-            elif np.isfinite(result):
-                if driver.get_numericalArgNo() == 1:
-                    if result != elementaryInput[0][0] and result != math.ceil(elementaryInput[0][0]) and result != math.floor(elementaryInput[0][0]):
-                        driver.add_classificationOutput(result)
-                    else:
-                        driver.add_exceptionMessage("warning: possible identity or rounding function")
-                        driver.add_classificationOutput(0)
-                else:
+        # weeds out special values, identity funcs, rounding funcs
+        elif np.isfinite(result):
+            if driver.get_numericalArgNo() == 1:
+                if result != elementaryInput[0][0] and result != math.ceil(elementaryInput[0][0]) and result != math.floor(elementaryInput[0][0]):
                     driver.add_classificationOutput(result)
+                else:
+                    driver.add_exceptionMessage("warning: possible identity or rounding function")
+                    driver.add_classificationOutput(0)
             else:
-                driver.add_exceptionMessage("unrecognized output type")
-                driver.add_classificationOutput(0)
+                driver.add_classificationOutput(result)
+        else:
+            driver.add_exceptionMessage("unrecognized output type")
+            driver.add_classificationOutput(0)
+        DRIVER_LIST[key] = driver
+    
+    # for each elementary input
+    for elementaryInput in ELEMENTARY_INPUTS.values():
+        taskID = 1
+        processes = []
+        # for each driver in the DRIVER_LIST, run on the elementary input and accumulate result
+        for key, driver in DRIVER_LIST.items():
+            # create multi-process
+            p = multiprocessing.Process(target=runDriver_parallelly, args=[elementaryInput, driver, key])
+            p.start()
+            processes.append(p)
+
+            # wait when we have enough tasks in parallel
+            if taskID % NUM_MULTIPROCESSING is 0:
+                # wait for the processes
+                for process in processes:
+                    process.join()
+            
+            # printing progress bar
             sys.stdout.write('\r')
             sys.stdout.write("[%-100s] %d%%" % ('='*int(i/lengthInput*100), int(i/lengthInput*100)))
             sys.stdout.flush()
             i+=1
+
+        # wait for the processes
+        for process in processes:
+            process.join()
+    
+    sys.stdout.write('\n')
 
     executedDriverLists = {}
 
@@ -334,11 +364,19 @@ if __name__ == "__main__":
     with open("__temp/__driverCollection", 'rb') as fp:
         DRIVER_LIST = pickle.load(fp)
 
+    # convert DRIVER_LIST to a shared list
+    manager = multiprocessing.Manager()
+
+    DRIVER_LIST_MANAGER = manager.dict(DRIVER_LIST)
+
     ELEMENTARY_INPUTS = generateElementaryInputs()
 
     CLASSES = {}
 
-    classify(CLASSES, DRIVER_LIST, ELEMENTARY_INPUTS)
+    print("Running classifier: ")
+    classify(CLASSES, DRIVER_LIST_MANAGER, ELEMENTARY_INPUTS)
+    DRIVER_LIST = dict(DRIVER_LIST_MANAGER)
+
     pruneClasses(CLASSES)
     autoRemoveSelectedDrivers(CLASSES)
     getStats(CLASSES)

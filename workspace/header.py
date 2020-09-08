@@ -40,8 +40,6 @@ INACCURACY = 3
 MIX_OF_DOUBLES_EXCEPTIONS_SPECIAL_VALUES = 2
 MIX_OF_EXCEPTIONS_SPECIAL_VALUES = 1
 
-################# BEGIN HYPERPARAMETERS #################
-
 # Threshold for determining when a function execution should be
 # determined a "TIMEOUT"
 TIMELIMIT = 20
@@ -51,11 +49,13 @@ CLASS_TOLERANCE = 0.00000001
 ERROR_TOLERANCE = 0.001
 
 # Thread Number for Multiprocess
-# string "max" will set value to be the output of os.cpu_count()
-# alternatively, an integer may be specified
 MAX_THREAD = "max"
 
-################# END HYPERPARAMETERS #################
+# check user tuned multi-task number
+if MAX_THREAD == "max":
+    NUM_MULTIPROCESSING = os.cpu_count()
+else:
+    NUM_MULTIPROCESSING = MAX_THREAD
 
 
 class TemplateDriver(ABC):
@@ -150,16 +150,21 @@ class GenericCDriver(TemplateDriver):
         out = OutputGrabber(sys.stderr)
         out.start()
 
-        # run driver, keep an eye out for timeouts
-        result = 0
-        recv_end, send_end = multiprocessing.Pipe(False)
-        p = multiprocessing.Process(target=lambda send_end, arg1, arg2: send_end.send(self.callableDriver(arg1, arg2)), args=(send_end, c_doubles, c_ints))
-        p.start()
-        if recv_end.poll(TIMELIMIT):
-            result = recv_end.recv()
-        else:
-            result = "EXCEPTION: TIMEOUT"
-            p.terminate()
+        # catch warnings and throw exceptions instead
+        warnings.simplefilter('error')
+        
+        try:
+            # run the test
+            signal.signal(signal.SIGALRM, self.timeoutHandler)
+            signal.alarm(TIMELIMIT)
+            result = self.callableDriver(c_doubles, c_ints)
+            signal.alarm(0)
+        except Exception as e:
+            signal.alarm(0)
+            if str(e) == '':
+                result = "EXCEPTION: " + str(type(e).__name__)
+            else:
+                result = "EXCEPTION: " + str(e)  
         out.stop()
 
         # if out captured an error, log an exception
