@@ -17,14 +17,15 @@ from header import *
 WD = os.path.dirname(os.path.abspath(__file__))
 os.chdir(WD)
 
+# diffTester ID for progress bar
+diffTesterID = multiprocessing.Value("i", 1)
+numDiffTester = 0
 
 '''
 takes in an equivalence class, gathers all test inputs to be used 
 with that equivalence class, and creates/saves discrepancy objects
 '''
 def diffTester(classNo, classKey, totalClassCount, equivalenceClass, TEST_INPUTS, UNIQUE_DISCREPANCIES, ALL_DISCREPANCIES, USED_INPUTS):
-
-    print("Testing Class {}/{}".format(classNo, totalClassCount - 1))
 
     # grab all inputs tagged with "all_"
     inputNames = [x for x in TEST_INPUTS.keys() if "all_" in x]
@@ -68,6 +69,12 @@ def diffTester(classNo, classKey, totalClassCount, equivalenceClass, TEST_INPUTS
                     UNIQUE_DISCREPANCIES[x.get_id()] = x                    
                 
                 ALL_DISCREPANCIES.append(x)
+
+    # printing progress bar
+    sys.stdout.write('\r')
+    sys.stdout.write("[%-100s] %d%%" % ('#'*int(diffTesterID.value/numDiffTester*100), int(diffTesterID.value/numDiffTester*100)))
+    sys.stdout.flush()
+    diffTesterID.value += 1
         
 
 ''' function to write out a csv file of the results '''
@@ -163,11 +170,8 @@ def getStats(UNIQUE_DISCREPANCIES, ALL_DISCREPANCIES, USED_INPUTS):
         tempz.reverse()
 
         f.write("\nspecialValue_unique_discrepancyTally: {}\n".format(tempx))
-        #f.write("\t# of Unique Discrepancies/# of Evals (# of Unique Inputs): {}/{} ({})\n".format(sum(list(specialValue_discrepancyTally.values())), specialValueEvals, specialValueInputTotal))
         f.write("testMigration_unique_discrepancyTally: {}\n".format(tempy))
-        #f.write("\t# of Unique Discrepancies/# of Evals (# of Unique Inputs): {}/{} ({})\n".format(sum(list(testMigration_discrepancyTally.values())), testMigrationEvals, testMigrationInputTotal))
         f.write("s3fp_unique_discrepancyTally: {}\n".format(tempz))
-        #f.write("\t# of Unique Discrepancies/# of Evals (# of Unique Inputs): {}/{} ({})\n".format(sum(list(s3fp_discrepancyTally.values())), s3fpEvals, s3fpInputTotal))
 
         f.write("\nUNIQUE DISCREPANCY TOTALS:\n")
         f.write("\tTIMEOUTS: {}\n".format(total_discrepancyTally[6]))
@@ -178,6 +182,14 @@ def getStats(UNIQUE_DISCREPANCIES, ALL_DISCREPANCIES, USED_INPUTS):
         f.write("\tMIX OF EXCEPTIONS AND SPECIAL VALUES: {}\n".format(total_discrepancyTally[1]))
         f.write("\n\t\tTOTAL # OF DISCREPANCIES: {}\n".format(sum(list(total_discrepancyTally.values()))))
 
+    # write contents of statistics file to stdout
+    with open("logs/statistics.txt", "r") as f:
+        line = f.readline()
+        print()
+        while line:
+            print(line, end='')
+            line = f.readline()
+    
       
 def inspect(UNIQUE_DISCREPANCIES):
     inspected_discrepancies = {}
@@ -244,20 +256,15 @@ if __name__ == "__main__":
         for i in range(start, end):
             diffTester(classNoList[i], classKeyList[i], len(list(CLASSES.keys())), CLASSES[classKeyList[i]], TEST_INPUTS, UNIQUE_DISCREPANCIES_MANAGER, ALL_DISCREPANCIES_MANAGER, USED_INPUTS_MANAGER)
 
-    # check user tuned multi-task number
-    if MAX_THREAD == "max":
-        NUM_MULTIPROCESSING = os.cpu_count()
-    elif MAX_THREAD > len(classNoList):
-        NUM_MULTIPROCESSING = os.cpu_count()
-    else:
-        NUM_MULTIPROCESSING = MAX_THREAD
-
     # find break points for chunks of classes
     breakPoints = []
     breakPoints.append(0)
     for i in range(1, NUM_MULTIPROCESSING):
         breakPoints.append(int(len(classNoList) * (i / NUM_MULTIPROCESSING)))
     breakPoints.append(len(classNoList))
+    numDiffTester = len(classNoList)
+
+    print("\n** Running Differential Tester: ")
 
     # create multi-process
     processes = []
@@ -269,6 +276,9 @@ if __name__ == "__main__":
     # wait for the processes
     for process in processes:
         process.join()
+
+    sys.stdout.write('\n')
+
 
     # convert multiprocess data structure back to normal python data structure
     UNIQUE_DISCREPANCIES = dict(UNIQUE_DISCREPANCIES_MANAGER)

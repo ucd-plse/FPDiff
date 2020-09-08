@@ -112,7 +112,7 @@ def classify(CLASSES, DRIVER_LIST, ELEMENTARY_INPUTS):
             
             # printing progress bar
             sys.stdout.write('\r')
-            sys.stdout.write("[%-100s] %d%%" % ('='*int(i/lengthInput*100), int(i/lengthInput*100)))
+            sys.stdout.write("[%-100s] %d%%" % ('#'*int(i/lengthInput*100), int(i/lengthInput*100)))
             sys.stdout.flush()
             i+=1
 
@@ -345,18 +345,17 @@ def getStats(CLASSES):
     # gather some statistics, save the information
     with open("logs/statistics.txt", 'a') as f:
         f.write("\nTOTAL # OF CLASSES: {}\n".format(allClassTally))
-        f.write("# OF NON-TRIVIAL CLASSES: {}\n".format(nontrivialClassTally))
-
+        
 
 def prettyPrintClasses(CLASSES):
-    print("==================================================")
+    print("--------------------------------------------")
 
     for counter, classKey in enumerate(CLASSES.keys()):
         print("Class {}:\n".format(counter))
         for driver in CLASSES[classKey]:
-            print("{:<35} => {}".format(driver.get_driverName(), driver.get_id()))
+            print("{}".format(driver.get_driverName()))
         print()
-        print("==================================================")
+        print("--------------------------------------------")
 
 
 if __name__ == "__main__":
@@ -373,7 +372,7 @@ if __name__ == "__main__":
 
     CLASSES = {}
 
-    print("Running classifier: ")
+    print("\n** Running Classifier: ")
     classify(CLASSES, DRIVER_LIST_MANAGER, ELEMENTARY_INPUTS)
     DRIVER_LIST = dict(DRIVER_LIST_MANAGER)
 

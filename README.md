@@ -86,7 +86,7 @@ of representative results. _The subset execution need not be undertaken
 if the full run is performed;_ it is provided as a convenience.
 Hyperparameters for FPDiff executions may be adjusted by editing `header.py`.
 
-### [1.1] Running FPDiff on all discoverable functions (approx. 1.5 hours)
+### [1.1] Running FPDiff on all discoverable functions (approx. 1 hour)
 ```
 $ nohup ./run.sh
 ```
@@ -102,7 +102,7 @@ equivalence classes, and finally perform differential testing to
 discover numerical discrepancies.
 
 
-### [1.2] Running FPDiff on a subset of representative functions (approx. 15 minutes)
+### [1.2] Running FPDiff on a subset of representative functions (approx. 8 minutes)
 ```
 $ nohup ./run.sh subset
 ```
